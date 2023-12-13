@@ -41,3 +41,18 @@ export const readFile = (fileName) => {
 export const readInputFile = (year, day) => {
     return readFile(`${year}/${day < 10 ? `0${day}` : day}/input.txt`);
 };
+export const readExampleFile = (year, day) => {
+    return readFile(`${year}/${day < 10 ? `0${day}` : day}/example.txt`);
+};
+
+export const myParseInt = (n) => parseInt(n, 10);
+
+/**
+ * Extracts numbers from a string:
+ *
+ * Example: 'adasb412ioqe34' => [412, 34]
+ * @param {string} line
+ */
+export const extractNumbersFromString = (line) => line.match(/\b\d+\b/g).map(myParseInt);
+
+export const reduceSumNumberArray = (acc, curr) => acc += curr;
