@@ -23,7 +23,6 @@ const ensureDirectoryExistence = (filePath) => {
 
 export const writeToFile = (fileName, content) => {
     const absoluteFileName = path.join(__dirname, fileName);
-    console.log("absolute", absoluteFileName, fileName);
     ensureDirectoryExistence(absoluteFileName);
     fs.writeFile(absoluteFileName, content, (err) => {
         if (err) {
@@ -53,6 +52,6 @@ export const myParseInt = (n) => parseInt(n, 10);
  * Example: 'adasb412ioqe34' => [412, 34]
  * @param {string} line
  */
-export const extractNumbersFromString = (line) => line.match(/\b\d+\b/g).map(myParseInt);
+export const extractNumbersFromString = (line) => (line.match(/\b\d+\b/g) ?? []).map(myParseInt);
 
 export const reduceSumNumberArray = (acc, curr) => acc += curr;

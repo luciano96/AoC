@@ -5,8 +5,7 @@
   "scripts": {
     "gen-day": "node scripts/gen-day.mjs",
     "run-day": "node scripts/run-day.mjs nosubmit",
-    "run-day-submit": "node scripts/run-day.mjs submit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run-day-submit": "node scripts/run-day.mjs submit"
   },
   "keywords": [],
   "author": "",
