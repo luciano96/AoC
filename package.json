@@ -1,0 +1,20 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "gen-day": "node scripts/gen-day.mjs",
+    "run-day": "node scripts/run-day.mjs nosubmit",
+    "run-day-submit": "node scripts/run-day.mjs submit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "hygen": "^6.2.11",
+    "node-html-parser": "^6.1.11",
+    "plop": "^4.0.0"
+  }
+}
