@@ -70,7 +70,6 @@ const mapSeedToSoil = (seeds) => {
     });
 };
 
-
 // solution here
 export const solve1 = () => {
     const seeds = getSeedsFromInput1();
@@ -83,10 +82,47 @@ export const solve1 = () => {
     return Math.min(...prev.reduce((acc, curr) => [...acc, curr.dest], []));
 };
 
+const createNewSeeedRanges = (seedsToSearch, soils) => {
+    const mappedSoils = [];
+
+    while (seedsToSearch.length > 0) {
+        const seed = seedsToSearch.pop();
+        const findFit = soils.find(isInRange(seed.source));
+
+        if (findFit) {
+            const f = isInRange(seed.dest)(findFit);
+
+            if (!f) {
+                seedsToSearch.push({ source: seed.source + findFit[2], dest: seed.dest });
+                mappedSoils.push({
+                    source: seed.source - findFit[1] + findFit[0],
+                    dest: seed.source + findFit[2] - findFit[1] + findFit[0],
+                });
+            } else {
+                mappedSoils.push({
+                    source: seed.source - findFit[1] + findFit[0],
+                    dest: seed.dest - findFit[1] + findFit[0],
+                });
+            }
+        }
+    }
+
+    return mappedSoils;
+};
+
 // solution here
 export const solve2 = () => {
     const seeds = getSeedsFromInput2();
-    const minRange = mapDict[maps[maps.length - 1]].findIndex(
-        (l) => l[0] === Math.min(...mapDict[maps[maps.length - 1]].map((el) => el[0]))
-    );
+
+    let seedsToSearch = [...seeds];
+
+    for (let i = 0; i < maps.length; i++) {
+        const mappeds = mapDict[maps[i]];
+        const result = createNewSeeedRanges(seedsToSearch, mappeds);
+        seedsToSearch = result;
+    }
+
+    // console.log(">", seeds);
+    // console.log(">", seedsToSearch);
+    return Math.min(...seedsToSearch.reduce((acc, curr) => [...acc, curr.source], []));
 };
