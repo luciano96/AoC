@@ -1,0 +1,14 @@
+{
+    "name": "202306",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "module": "commonjs",
+    "scripts": {
+      "run": "node index.mjs",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Luciano Silva",
+    "license": "ISC"
+}
